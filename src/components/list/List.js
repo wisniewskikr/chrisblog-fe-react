@@ -1,5 +1,11 @@
+import ListAside from "./list-aside/ListAside";
+import ListMain from "./list-main/ListMain";
+
 const List = () => (
-    <h2>List</h2>
+    <div id="colorlib-page">
+        <ListAside />
+        <ListMain />
+    </div>
 );
 
 export default List;
