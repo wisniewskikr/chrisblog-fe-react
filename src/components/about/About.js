@@ -24,8 +24,8 @@ const About = () => {
                                         <p>I am interested in books, movies, travels and Latino dances - salsa, bachata, kizomba. 
                                         Professionally I'm IT guy who tries to improve his programming skills and share his knowledge with others.
                                         If you want to contact me please use my email <a href="mailto:wisniewskikr@gmail.com">wisniewskikr&#64;gmail.com</a> 
-                                        , <a href="https://www.facebook.com/krzysztof.wisniewski.1979" target="_blank">Facebook page</a>
-                                        or <a href="https://www.instagram.com/krzysztof.wisniewski.1979/" target="_blank">Instagram page</a>.</p>
+                                        , <a href="https://www.facebook.com/krzysztof.wisniewski.1979" target="_blank" rel="noreferrer">Facebook page</a>
+                                        or <a href="https://www.instagram.com/krzysztof.wisniewski.1979/" target="_blank" rel="noreferrer">Instagram page</a>.</p>
                                         <a href="#" className="btn py-3 px-4 btn-primary">Go Back</a>
                                     </div>
                                 </div>
