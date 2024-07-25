@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './About.css';
 
 const About = () => {
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = './../../../assets/js/main.js';
+        script.async = true;
+    
+        document.body.appendChild(script);
+    
+        return () => {
+          document.body.removeChild(script);
+        };
+      }, []);
     
     return(
         <div id="colorlib-page">
