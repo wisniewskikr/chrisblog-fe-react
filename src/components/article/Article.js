@@ -29,72 +29,72 @@ const Article = () => {
         <div id="colorlib-page">
             <form>
                     
-                <div id="colorlib-main" class="article">
-                    <div class="container">	    			
-                            <div class="col-lg-12 px-md-7 py-7">
+                <div id="colorlib-main" className="article">
+                    <div className="container">	    			
+                            <div className="col-lg-12 px-md-7 py-7">
                             
-                                <span class=" d-none d-xl-block">
-                                    <p class="blog-img">
+                                <span className=" d-none d-xl-block">
+                                    <p className="blog-img">
                                         <Link to="/">
-                                            <img src="https://chrisblog.s3-eu-west-1.amazonaws.com/common/chris_blog.png" alt="" class="img-fluid"/>
+                                            <img src="https://chrisblog.s3-eu-west-1.amazonaws.com/common/chris_blog.png" alt="" className="img-fluid"/>
                                         </Link>
                                     </p>
                                 </span>	
 
-                                <div class="nav d-flex align-items-center full-height">
+                                <div className="nav d-flex align-items-center full-height">
                                     <Link to="/">
-                                        <span class="nav-item">Home</span>
+                                        <span className="nav-item">Home</span>
                                     </Link>
                                     <Link to="/about">
-                                        <span class="nav-item">About Me</span>
+                                        <span className="nav-item">About Me</span>
                                     </Link>
                                 </div>
 
-                                <div class="row articleSection pt-md-4 articleBanner d-flex align-items-center justify-content-center full-height"	    					
+                                <div className="row articleSection pt-md-4 articleBanner d-flex align-items-center justify-content-center full-height"	    					
                                     style="background-image: url(https://chrisblog.s3-eu-west-1.amazonaws.com/banner/Books/banner.jpg);"
                                     >
-                                    <div class="col-lg-12 px-md-7 py-7" >
-                                        <div class="row articleSection d-flex align-items-center justify-content-center full-height ">
-                                            <div class="mb-3 articleBannerText" > {title} </div>
+                                    <div className="col-lg-12 px-md-7 py-7" >
+                                        <div className="row articleSection d-flex align-items-center justify-content-center full-height ">
+                                            <div className="mb-3 articleBannerText" > {title} </div>
                                         </div>
-                                        <div class="row articleSection meta-wrap">
+                                        <div className="row articleSection meta-wrap">
                                             <p>
-                                                <span class="icon-wrap"><i class="icon-calendar mr-2"></i> {date} </span>
-                                                <span class="icon-wrap"><i class="icon-person mr-2"></i> {title} </span>                                                
+                                                <span className="icon-wrap"><i className="icon-calendar mr-2"></i> {date} </span>
+                                                <span className="icon-wrap"><i className="icon-person mr-2"></i> {title} </span>                                                
                                             </p>
                                         </div>
                                     </div>
                                 </div> 
 
-                                <span class="d-none d-xl-block">
-                                    <div class="avatarIcon">
-                                        <div class="avatar">
+                                <span className="d-none d-xl-block">
+                                    <div className="avatarIcon">
+                                        <div className="avatar">
                                             <img src="https://chrisblog.s3-eu-west-1.amazonaws.com/common/none.png" alt=""/>
                                         </div>
-                                        <span class="author_name">By: <b> {author} </b> </span>
+                                        <span className="author_name">By: <b> {author} </b> </span>
                                     </div>
                                 </span>	
 
-                                <hr class="line d-none d-xl-block"/>						
+                                <hr className="line d-none d-xl-block"/>						
                                     
-                                <h2 class="mb-3 mt-5 articleSectionTitle">Introduction</h2>
-                                <div class="row articleSection pt-md-4" > {description} </div>
+                                <h2 className="mb-3 mt-5 articleSectionTitle">Introduction</h2>
+                                <div className="row articleSection pt-md-4" > {description} </div>
                                 
-                                <p class="article-img">
-                                    <img src="https://chrisblog.s3-eu-west-1.amazonaws.com/articles/article-{{article?.id}}/main.jpg" alt="" class="img-fluid"/>
+                                <p className="article-img">
+                                    <img src="https://chrisblog.s3-eu-west-1.amazonaws.com/articles/article-{{article?.id}}/main.jpg" alt="" className="img-fluid"/>
                                 </p>
 
                                 if ({template} == 'CONTENT') {
                                     <span>
-                                        <h2 class="mb-3 mt-5 articleSectionTitle">Description</h2>	
-                                        <div class="row articleSection pt-md-4" > {content} </div>	
+                                        <h2 className="mb-3 mt-5 articleSectionTitle">Description</h2>	
+                                        <div className="row articleSection pt-md-4" > {content} </div>	
                                     </span>
                                 }
 
                                 if ({template} == 'LINK_ALBUM') {
                                     <span>
-                                        <h2 class="mb-3 mt-5 articleSectionTitle">Google Album</h2>				            
-                                        <div class="row articleSection pt-md-4">
+                                        <h2 className="mb-3 mt-5 articleSectionTitle">Google Album</h2>				            
+                                        <div className="row articleSection pt-md-4">
                                             Pictures from this area you can find in my
                                             <a href={url} target="blank">Google Album</a>.
                                         </div>
@@ -103,8 +103,8 @@ const Article = () => {
 
                                 if ({template} == 'LINK_DOCUMENT') {
                                     <span>
-                                        <h2 class="mb-3 mt-5 articleSectionTitle">Google Document</h2>				            
-                                        <div class="row articleSection pt-md-4">
+                                        <h2 className="mb-3 mt-5 articleSectionTitle">Google Document</h2>				            
+                                        <div className="row articleSection pt-md-4">
                                             More details about this topic you can find in my 
                                             <a href={url} target="blank">Google Document</a>.
                                         </div> 
@@ -113,8 +113,8 @@ const Article = () => {
 
                                 if ({template} == 'LINK_GITHUB') {
                                     <span>
-                                        <h2 class="mb-3 mt-5 articleSectionTitle">Github Repository</h2>				            
-                                        <div class="row articleSection pt-md-4">
+                                        <h2 className="mb-3 mt-5 articleSectionTitle">Github Repository</h2>				            
+                                        <div className="row articleSection pt-md-4">
                                             Source Code with explanation you can find in my 
                                             <a href={url} target="blank">Github Repository</a>.
                                         </div>
@@ -123,16 +123,16 @@ const Article = () => {
 
                                 if ({template} == 'LINK_YOUTUBE') {
                                     <span>
-                                        <h2 class="mb-3 mt-5 articleSectionTitle">YouTube Channel</h2>				            
-                                        <div class="row articleSection pt-md-4">
+                                        <h2 className="mb-3 mt-5 articleSectionTitle">YouTube Channel</h2>				            
+                                        <div className="row articleSection pt-md-4">
                                             More details about this topic you can find on my
                                             <a href={url} target="blank">YouTube Channel</a>.
                                         </div>
                                     </span>
                                 } 
 
-                                <div class="form-group article-button">
-                                    <Link to="/" class="btn py-3 px-4 btn-primary">Go Back</Link>
+                                <div className="form-group article-button">
+                                    <Link to="/" className="btn py-3 px-4 btn-primary">Go Back</Link>
                                 </div>       
                             
                             </div>
