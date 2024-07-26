@@ -96,7 +96,7 @@ const Article = () => {
                                         <h2 class="mb-3 mt-5 articleSectionTitle">Google Album</h2>				            
                                         <div class="row articleSection pt-md-4">
                                             Pictures from this area you can find in my
-                                            <a href="{url}" target="blank">Google Album</a>.
+                                            <a href={url} target="blank">Google Album</a>.
                                         </div>
                                     </span>	
                                 }
@@ -106,7 +106,7 @@ const Article = () => {
                                         <h2 class="mb-3 mt-5 articleSectionTitle">Google Document</h2>				            
                                         <div class="row articleSection pt-md-4">
                                             More details about this topic you can find in my 
-                                            <a href="{url}" target="blank">Google Document</a>.
+                                            <a href={url} target="blank">Google Document</a>.
                                         </div> 
                                     </span> 
                                 }
@@ -116,8 +116,7 @@ const Article = () => {
                                         <h2 class="mb-3 mt-5 articleSectionTitle">Github Repository</h2>				            
                                         <div class="row articleSection pt-md-4">
                                             Source Code with explanation you can find in my 
-                                            {/* TODO */}
-                                            <a href="{{article?.url}}" target="blank">Github Repository</a>.
+                                            <a href={url} target="blank">Github Repository</a>.
                                         </div>
                                     </span>
                                 }
@@ -127,7 +126,7 @@ const Article = () => {
                                         <h2 class="mb-3 mt-5 articleSectionTitle">YouTube Channel</h2>				            
                                         <div class="row articleSection pt-md-4">
                                             More details about this topic you can find on my
-                                            <a href="{url}" target="blank">YouTube Channel</a>.
+                                            <a href={url} target="blank">YouTube Channel</a>.
                                         </div>
                                     </span>
                                 } 
