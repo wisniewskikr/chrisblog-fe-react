@@ -81,7 +81,8 @@ const Article = () => {
                                 <div className="row articleSection pt-md-4" > {description} </div>
                                 
                                 <p className="article-img">
-                                    <img src="https://chrisblog.s3-eu-west-1.amazonaws.com/articles/article-{{article?.id}}/main.jpg" alt="" className="img-fluid"/>
+                                    {/* TODO */}
+                                    <img src="https://chrisblog.s3-eu-west-1.amazonaws.com/articles/article-1/main.jpg" alt="" className="img-fluid"/>
                                 </p>
 
                                 if ({template} == 'CONTENT') {
