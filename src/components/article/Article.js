@@ -51,7 +51,7 @@ const Article = () => {
                                 </div>
 
                                 <div className="row articleSection pt-md-4 articleBanner d-flex align-items-center justify-content-center full-height"	    					
-                                    style="background-image: url(https://chrisblog.s3-eu-west-1.amazonaws.com/banner/Books/banner.jpg);"
+                                    style={inlineStyles.backgroundImage}
                                     >
                                     <div className="col-lg-12 px-md-7 py-7" >
                                         <div className="row articleSection d-flex align-items-center justify-content-center full-height ">
@@ -144,5 +144,11 @@ const Article = () => {
     );
 
 }
+
+const inlineStyles = {
+    backgroundImage: {
+        backgroundImage: "url(https://chrisblog.s3-eu-west-1.amazonaws.com/banner/Books/banner.jpg)",
+    },
+};
 
 export default Article;
