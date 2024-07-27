@@ -30,7 +30,7 @@ const Article = () => {
 
         const fetchData = async () => {
     
-          const response = await fetch("http://localhost:8080/api/v1/article/1");
+          const response = await fetch(`http://localhost:8080/api/v1/article/${id}`);
           const result = await response.json();
           setTitle(result.title);
           setDate(result.date);
