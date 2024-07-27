@@ -25,7 +25,47 @@ const Article = () => {
     const content = "Content (Inner HTML)";
     const url = "https://www.google.com";
 
-    return(
+    let descriptionContent = null;
+    if (template === 'CONTENT') {
+        descriptionContent =    <span>
+                                    <h2 className="mb-3 mt-5 articleSectionTitle">Description</h2>	
+                                    <div className="row articleSection pt-md-4" > {content} </div>	
+                                </span>;
+    } else if (template === 'LINK_ALBUM') {
+        descriptionContent =   <span>
+                                    <h2 className="mb-3 mt-5 articleSectionTitle">Google Album</h2>				            
+                                    <div className="row articleSection pt-md-4">
+                                        Pictures from this area you can find in my
+                                        <a href={url} target="blank">Google Album</a>.
+                                    </div>
+                                </span>;
+    } else if (template === 'LINK_DOCUMENT') {
+        descriptionContent =   <span>
+                                    <h2 className="mb-3 mt-5 articleSectionTitle">Google Document</h2>				            
+                                    <div className="row articleSection pt-md-4">
+                                        More details about this topic you can find in my 
+                                        <a href={url} target="blank">Google Document</a>.
+                                    </div> 
+                                </span>;
+    } else if (template === 'LINK_GITHUB') {
+        descriptionContent =   <span>
+                                    <h2 className="mb-3 mt-5 articleSectionTitle">Github Repository</h2>				            
+                                    <div className="row articleSection pt-md-4">
+                                        Source Code with explanation you can find in my 
+                                        <a href={url} target="blank">Github Repository</a>.
+                                    </div>
+                                </span>;
+    } else if (template === 'LINK_YOUTUBE') {
+        descriptionContent =   <span>
+                                    <h2 className="mb-3 mt-5 articleSectionTitle">YouTube Channel</h2>				            
+                                    <div className="row articleSection pt-md-4">
+                                        More details about this topic you can find on my
+                                        <a href={url} target="blank">YouTube Channel</a>.
+                                    </div>
+                                </span>;
+    }
+
+    return(        
         <div id="colorlib-page">
             <form>
                     
@@ -85,54 +125,10 @@ const Article = () => {
                                     <img src="https://chrisblog.s3-eu-west-1.amazonaws.com/articles/article-1/main.jpg" alt="" className="img-fluid"/>
                                 </p>
 
-                                if ({template} == 'CONTENT') {
-                                    <span>
-                                        <h2 className="mb-3 mt-5 articleSectionTitle">Description</h2>	
-                                        <div className="row articleSection pt-md-4" > {content} </div>	
-                                    </span>
-                                }
-
-                                if ({template} == 'LINK_ALBUM') {
-                                    <span>
-                                        <h2 className="mb-3 mt-5 articleSectionTitle">Google Album</h2>				            
-                                        <div className="row articleSection pt-md-4">
-                                            Pictures from this area you can find in my
-                                            <a href={url} target="blank">Google Album</a>.
-                                        </div>
-                                    </span>	
-                                }
-
-                                if ({template} == 'LINK_DOCUMENT') {
-                                    <span>
-                                        <h2 className="mb-3 mt-5 articleSectionTitle">Google Document</h2>				            
-                                        <div className="row articleSection pt-md-4">
-                                            More details about this topic you can find in my 
-                                            <a href={url} target="blank">Google Document</a>.
-                                        </div> 
-                                    </span> 
-                                }
-
-                                if ({template} == 'LINK_GITHUB') {
-                                    <span>
-                                        <h2 className="mb-3 mt-5 articleSectionTitle">Github Repository</h2>				            
-                                        <div className="row articleSection pt-md-4">
-                                            Source Code with explanation you can find in my 
-                                            <a href={url} target="blank">Github Repository</a>.
-                                        </div>
-                                    </span>
-                                }
-
-                                if ({template} == 'LINK_YOUTUBE') {
-                                    <span>
-                                        <h2 className="mb-3 mt-5 articleSectionTitle">YouTube Channel</h2>				            
-                                        <div className="row articleSection pt-md-4">
-                                            More details about this topic you can find on my
-                                            <a href={url} target="blank">YouTube Channel</a>.
-                                        </div>
-                                    </span>
-                                } 
+                                {descriptionContent}
 
                                 <div className="form-group article-button">
+                                    {/* TODO */}
                                     <Link to="/" className="btn py-3 px-4 btn-primary">Go Back</Link>
                                 </div>       
                             
