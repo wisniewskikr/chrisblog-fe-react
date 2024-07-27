@@ -24,6 +24,7 @@ const Article = () => {
     const template = "CONTENT";
     const content = "Content (Inner HTML)";
     const url = "https://www.google.com";
+    const articleUrl = "https://chrisblog.s3-eu-west-1.amazonaws.com/articles/article-" + id + "/main.jpg";
 
     let descriptionContent = null;
     if (template === 'CONTENT') {
@@ -122,7 +123,7 @@ const Article = () => {
                                 
                                 <p className="article-img">
                                     {/* TODO */}
-                                    <img src="https://chrisblog.s3-eu-west-1.amazonaws.com/articles/article-1/main.jpg" alt="" className="img-fluid"/>
+                                    <img src={articleUrl} alt="" className="img-fluid"/>
                                 </p>
 
                                 {descriptionContent}
