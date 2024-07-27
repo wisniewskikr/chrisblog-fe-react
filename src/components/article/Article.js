@@ -1,9 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const Article = () => {
 
     let { id } = useParams(); 
+    const [title, setTitle] = useState("Title");
+    const [date, setDate] = useState("Date");
+    const [author, setAuthor] = useState("Author");
+    const [description, setDescription] = useState("Description (Inner HTML)");
+    const [template, setTemplate] = useState("CONTENT");
+    const [content, setContent] = useState("Content (Inner HTML)");
+    const [url, setUrl] = useState("https://www.google.com");
+    const articleUrl = getArticleUrl();
+    const descriptionContent = getDescriptionContent(); 
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -17,15 +26,25 @@ const Article = () => {
         };
       }, []);
 
-    const title = "Title";
-    const date = "Date";
-    const author = "Author";
-    const description = "Description (Inner HTML)";
-    const template = "CONTENT";
-    const content = "Content (Inner HTML)";
-    const url = "https://www.google.com";
-    const articleUrl = getArticleUrl();
-    const descriptionContent = getDescriptionContent();    
+      useEffect(() =>{
+
+        const fetchData = async () => {
+    
+          const response = await fetch("http://localhost:8080/api/v1/article/1");
+          const result = await response.json();
+          setTitle(result.title);
+          setDate(result.date);
+          setAuthor(result.author);
+          setDescription(result.description);
+          setTemplate(result.template);
+          setContent(result.content);
+          setUrl(result.url);
+    
+        };
+    
+        fetchData();
+    
+      }, [id]);       
 
     return(        
         <div id="colorlib-page">
