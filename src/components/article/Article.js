@@ -99,7 +99,7 @@ const Article = () => {
                                 <hr className="line d-none d-xl-block"/>						
                                     
                                 <h2 className="mb-3 mt-5 articleSectionTitle">Introduction</h2>
-                                <div className="row articleSection pt-md-4" > {description} </div>
+                                <div className="row articleSection pt-md-4" dangerouslySetInnerHTML={{ __html: description }}/>
                                 
                                 <p className="article-img">
                                     {/* TODO */}
@@ -131,7 +131,7 @@ const Article = () => {
         if (template === 'CONTENT') {
             descriptionContent =    <span>
                                         <h2 className="mb-3 mt-5 articleSectionTitle">Description</h2>	
-                                        <div className="row articleSection pt-md-4" > {content} </div>	
+                                        <div className="row articleSection pt-md-4" dangerouslySetInnerHTML={{ __html: content }} />	
                                     </span>;
         } else if (template === 'LINK_ALBUM') {
             descriptionContent =   <span>
