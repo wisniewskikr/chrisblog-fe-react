@@ -30,9 +30,7 @@ const About = () => {
                                 </div>
 
                                 <div className="col-md-6 d-flex align-items-center">
-                                    {/* TODO */}
-                                    {/* <div class="text px-4 pt-5 pt-md-0 px-md-4 pr-md-5 ftco-animate"> */}
-                                    <div className="text px-4 pt-5 pt-md-0 px-md-4 pr-md-5">
+                                    <div class="text px-4 pt-5 pt-md-0 px-md-4 pr-md-5 ftco-animate">
                                         <h2 className="mb-4">I'm <span>Krzysztof Wisniewski</span> a Polish IT Guy.</h2>
                                         <p>I am interested in books, movies, travels and Latino dances - salsa, bachata, kizomba. 
                                         Professionally I'm IT guy who tries to improve his programming skills and share his knowledge with others.
