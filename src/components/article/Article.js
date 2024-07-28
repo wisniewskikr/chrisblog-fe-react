@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { json, Link, useParams } from 'react-router-dom';
 
 const Article = () => {
 
@@ -30,15 +30,27 @@ const Article = () => {
 
         const fetchData = async () => {
     
-          const response = await fetch(`http://localhost:8080/api/v1/article/${id}`);
-          const result = await response.json();
-          setTitle(result.title);
-          setDate(result.date);
-          setAuthor(result.author);
-          setDescription(result.description);
-          setTemplate(result.template);
-          setContent(result.content);
-          setUrl(result.url);
+          try {
+
+            const response = await fetch(`http://localhost:8080/api/v1/article/${id}`);
+
+            if (!response.ok) {
+                const text = JSON.stringify(response.text());
+                throw new Error(`HTTP error! Status: ${response.status}. Message: ${text}.`);
+            }
+
+            const result = await response.json();
+            setTitle(result.title);
+            setDate(result.date);
+            setAuthor(result.author);
+            setDescription(result.description);
+            setTemplate(result.template);
+            setContent(result.content);
+            setUrl(result.url);
+
+          } catch (error) {
+            console.error('An error occurred:', error);
+          }
     
         };
     
