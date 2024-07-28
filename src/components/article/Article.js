@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { json, Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const Article = () => {
 
@@ -13,6 +13,7 @@ const Article = () => {
     const [url, setUrl] = useState("https://www.google.com");
     const articleUrl = getArticleUrl();
     const descriptionContent = getDescriptionContent(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -56,7 +57,11 @@ const Article = () => {
     
         fetchData();
     
-      }, [id]);       
+      }, [id]); 
+      
+      const handleGoBack = () => {
+        navigate(-1);
+      };
 
     return(        
         <div id="colorlib-page">
@@ -114,15 +119,13 @@ const Article = () => {
                                 <div className="row articleSection pt-md-4" dangerouslySetInnerHTML={{ __html: description }}/>
                                 
                                 <p className="article-img">
-                                    {/* TODO */}
                                     <img src={articleUrl} alt="" className="img-fluid"/>
                                 </p>
 
                                 {descriptionContent}
 
                                 <div className="form-group article-button">
-                                    {/* TODO */}
-                                    <Link to="/" className="btn py-3 px-4 btn-primary">Go Back</Link>
+                                    <Link onClick={handleGoBack} className="btn py-3 px-4 btn-primary">Go Back</Link>
                                 </div>       
                             
                             </div>
