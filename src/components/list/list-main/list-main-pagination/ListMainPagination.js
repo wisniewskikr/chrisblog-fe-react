@@ -1,7 +1,7 @@
-const ListMainPagination = () => {
+const ListMainPagination = (props) => {
 
     return (
-        <h2>List Main Pagination</h2>
+        <h2>List Main Pagination. Disable Previous: {JSON.stringify(props.disablePrevious)}</h2>
     );
 
 }
