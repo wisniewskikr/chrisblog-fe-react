@@ -11,6 +11,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<List/>} />
+      <Route path="/category/:categoryId/sorting/:sorting/page/:page" element={<List/>} />
       <Route path="/about" element={<About/>} />
       <Route path="/article/:id" element={<Article/>} />
       <Route path="*" element={<Error/>} />

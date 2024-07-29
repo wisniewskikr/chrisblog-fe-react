@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import ListMainArticles from "./list-main-articles/ListMainArticles";
 import ListMainPagination from "./list-main-pagination/ListMainPagination";
 import ListMainSorting from "./list-main-sorting/ListMainSorting";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const ListMain = () => { 
 
+    let { categoryId, page, sorting } = useParams();
+    const [searchParams] = useSearchParams();
+    const searchText = searchParams.get("searchText");
+    const tagId = searchParams.get("tagId");
+
     const [articles, setArticles] = useState([]);
-    const [categoryId, setCategoryId] = useState(1);
-    const [tagId, setTagId] = useState(null);
-    const [page, setPage] = useState(1);
-    const [sorting, setSorting] = useState("TITLE_INCREASING");
-    const [searchText, setSearchText] = useState(null);
     const [pages, setPages] = useState([]);
     const [disablePrevious, setDisablePrevious] = useState(false);
     const [disableNext, setDisableNext] = useState(false);
@@ -21,10 +22,14 @@ const ListMain = () => {
     
           try {
 
+            if (categoryId == null || page == null || sorting == null) {
+                throw new Error("Atributes 'categoryId', 'page' and 'sorting' are required.");
+              }
+
             const articlesUrl = new URL("http://localhost:8080/api/v1/article");
-            articlesUrl.searchParams.append("categoryId", {categoryId});
-            articlesUrl.searchParams.append("page", {page});
-            articlesUrl.searchParams.append("sorting", {sorting});
+            articlesUrl.searchParams.append("categoryId", categoryId);
+            articlesUrl.searchParams.append("page", page);
+            articlesUrl.searchParams.append("sorting", sorting);
             if (searchText != null) {
                 articlesUrl.searchParams.append("searchText", {searchText});    
             }
