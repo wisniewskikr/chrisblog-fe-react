@@ -6,10 +6,10 @@ import ListMainSorting from "./list-main-sorting/ListMainSorting";
 const ListMain = () => { 
 
     const [articles, setArticles] = useState([]);
-    const [categoryId, setCategoryId] = useState(null);
+    const [categoryId, setCategoryId] = useState(1);
     const [tagId, setTagId] = useState(null);
-    const [page, setPage] = useState(null);
-    const [sorting, setSorting] = useState(null);
+    const [page, setPage] = useState(1);
+    const [sorting, setSorting] = useState("TITLE_INCREASING");
     const [searchText, setSearchText] = useState(null);
     const [pages, setPages] = useState([]);
     const [disablePrevious, setDisablePrevious] = useState(false);
@@ -21,7 +21,7 @@ const ListMain = () => {
     
           try {
 
-            const response = await fetch(`http://localhost:8080/api/v1/article?categoryId=1&page=1&sorting=TITLE_INCREASING`);
+            const response = await fetch(`http://localhost:8080/api/v1/article?categoryId=${categoryId}&page=${page}&sorting=${sorting}`);
 
             if (!response.ok) {
                 const text = JSON.stringify(response.text());
@@ -42,7 +42,7 @@ const ListMain = () => {
     
         fetchData();
     
-      }, []); 
+      }, [categoryId, tagId, page, sorting, searchText]); 
     
     return (
         <>
