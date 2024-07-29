@@ -16,6 +16,8 @@ const ListMain = () => {
     const [disablePrevious, setDisablePrevious] = useState(false);
     const [disableNext, setDisableNext] = useState(false);
 
+    const content = getContent();
+
     useEffect(() =>{
 
         const fetchData = async () => {
@@ -61,12 +63,36 @@ const ListMain = () => {
       }, [categoryId, tagId, page, sorting, searchText]); 
     
     return (
-        <>            
-            <ListMainSorting/>
-            <ListMainArticles articles={articles}/>
-            <ListMainPagination pages={pages} disablePrevious={disablePrevious} disableNext={disableNext}/>
-        </>
+        <div id="colorlib-main">
+            <section className="ftco-section">    
+                <div className="container">
+                    <div className="row px-md-4">        
+                        {content}
+                    </div>
+                </div>
+            </section>
+        </div>
     );
+
+    function getContent() {
+
+        let content = null;
+
+        if (articles.length !== 0) {
+            content =   <span className="full-width">
+                            <ListMainSorting/>
+                            <ListMainArticles articles={articles}/>
+                            <ListMainPagination pages={pages} disablePrevious={disablePrevious} disableNext={disableNext}/>
+                        </span>;
+        } else {
+            content =   <span>
+                            There is no article yet.
+                        </span>;
+        }
+
+        return content;
+
+    }
 
 }
 
