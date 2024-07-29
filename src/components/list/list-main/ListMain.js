@@ -61,11 +61,7 @@ const ListMain = () => {
       }, [categoryId, tagId, page, sorting, searchText]); 
     
     return (
-        <>
-            {/* TODO */}
-            Disable Previous: {JSON.stringify(disablePrevious)}
-            Disable Next: {JSON.stringify(disableNext)}
-            Pages: {pages}
+        <>            
             <ListMainSorting/>
             <ListMainArticles/>
             <ListMainPagination/>
