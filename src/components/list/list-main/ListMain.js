@@ -63,8 +63,8 @@ const ListMain = () => {
     return (
         <>            
             <ListMainSorting/>
-            <ListMainArticles/>
-            <ListMainPagination/>
+            <ListMainArticles articles={articles}/>
+            <ListMainPagination pages={pages} disablePrevious={disablePrevious} disableNext={disableNext}/>
         </>
     );
 
