@@ -1,5 +1,9 @@
+import ListMainArticles from "./list-main-articles/ListMainArticles";
+
 const ListMain = () => (
-    <h2>ListMain</h2>
+    <>
+        <ListMainArticles/>
+    </>
 );
 
 export default ListMain;
