@@ -21,10 +21,9 @@ const ListMainSorting = () => {
     const options = getOptions();
 
     const handleOnChange = (event) => {
-        setSelectedSorting(event.target.value);
-        // TODO
-        console.log(getUrl());
-        // navigate(getUrl());
+        const newSorting = event.target.value;
+        setSelectedSorting(newSorting);
+        navigate(getUrl(newSorting));        
     };
     
     function getOptions() {
@@ -33,19 +32,16 @@ const ListMainSorting = () => {
 
         for (let sort of sortings) {
             let selected = (selectedSorting === sort.value);
-            opions.push(<option value="{sort.value}" selected={selected}> {sort.text} </option>	);
+            opions.push(<option value={sort.value} selected={selected}> {sort.text} </option>	);
         }
 
         return opions;
 
     }
 
-    function getUrl() {
+    function getUrl(newSorting) {
 
-        const url = new URL("http://localhost:8080/");
-        url.searchParams.append("categoryId", categoryId);
-        url.searchParams.append("page", page);
-        url.searchParams.append("sorting", selectedSorting);
+        const url = new URL(`http://localhost:8080/category/${categoryId}/sorting/${newSorting}/page/${page}`);
         if (searchText != null) {
             url.searchParams.append("searchText", {searchText});    
         }
@@ -53,7 +49,7 @@ const ListMainSorting = () => {
             url.searchParams.append("tagId", {tagId});    
         }
 
-        return url;
+        return url.pathname;
 
     }
 
