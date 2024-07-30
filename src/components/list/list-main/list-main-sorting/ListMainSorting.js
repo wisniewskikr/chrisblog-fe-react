@@ -28,7 +28,7 @@ const ListMainSorting = () => {
         // Display only on big screens
         <span className="display-on-big-screen col-md-12">
             <div className="form-group row sorting-row ">
-                <label for="sorting" className="col-md-2 col-form-label lb-lg sorting">Sorting:</label>
+                <label htmlFor="sorting" className="col-md-2 col-form-label lb-lg sorting">Sorting:</label>
                 <div className="col-md-4">
                     {/* TODO - onChange */}
                     <select className="form-control sorting">
@@ -41,9 +41,11 @@ const ListMainSorting = () => {
 
 }
 
-function Sorting(text, value) {
-    this.text = text;
-    this.value = value;
+class Sorting {
+    constructor(text, value) {
+        this.text = text;
+        this.value = value;
+    }
 }
 
 export default ListMainSorting;
