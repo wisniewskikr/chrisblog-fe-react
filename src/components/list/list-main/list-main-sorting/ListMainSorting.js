@@ -31,8 +31,7 @@ const ListMainSorting = () => {
         let opions = [];
 
         for (let sort of sortings) {
-            let selected = (selectedSorting === sort.value);
-            opions.push(<option key={sort.value} value={sort.value} selected={selected}> {sort.text} </option>	);
+            opions.push(<option key={sort.value} value={sort.value}> {sort.text} </option>	);
         }
 
         return opions;
@@ -59,7 +58,7 @@ const ListMainSorting = () => {
             <div className="form-group row sorting-row ">
                 <label htmlFor="sorting" className="col-md-2 col-form-label lb-lg sorting">Sorting:</label>
                 <div className="col-md-4">
-                    <select className="form-control sorting" onChange={handleOnChange}>
+                    <select className="form-control sorting" onChange={handleOnChange} defaultValue={selectedSorting}>
                         {options}			        
                     </select>
                 </div>
