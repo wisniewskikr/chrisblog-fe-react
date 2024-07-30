@@ -9,7 +9,7 @@ const ListMainArticles = (props) => {
         let content = [];
 
         for (let article of articles) {
-            content.push(<ListMainArticlesArticle article={article} />);
+            content.push(<ListMainArticlesArticle key={article.id} article={article} />);
         }
 
         return content;

@@ -32,7 +32,7 @@ const ListMainSorting = () => {
 
         for (let sort of sortings) {
             let selected = (selectedSorting === sort.value);
-            opions.push(<option value={sort.value} selected={selected}> {sort.text} </option>	);
+            opions.push(<option key={sort.value} value={sort.value} selected={selected}> {sort.text} </option>	);
         }
 
         return opions;
