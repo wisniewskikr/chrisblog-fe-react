@@ -1,5 +1,14 @@
+import { useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
+
 const ListMainSorting = () => {
 
+    let { categoryId, page, sorting } = useParams();
+    const [searchParams] = useSearchParams();
+    const searchText = searchParams.get("searchText");
+    const tagId = searchParams.get("tagId");
+    const [selectedSorting, setSelectedSorting] = useState(sorting);
+    
     const sortings = [
         new Sorting("title: increasing", "title_increasing"),
         new Sorting("title: decreasing", "title_decreasing"),
@@ -7,12 +16,11 @@ const ListMainSorting = () => {
         new Sorting("date: decreasing", "date_decreasing"),
         new Sorting("author: increasing", "author_increasing"),
         new Sorting("author: decreasing", "author_decreasing")
-    ];
-    const selectedSorting = null;
+    ];    
     const options = getOptions();
 
-    const handleOnChange = () => {
-        // TODO
+    const handleOnChange = (event) => {
+        setSelectedSorting(event.target.value);
     };
     
     function getOptions() {
