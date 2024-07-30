@@ -24,8 +24,7 @@ const ListMainArticlesArticle = (props) => {
     return (
         <div className="col-md-12">
             <div className="blog-entry ftco-animate d-md-flex">
-                <span className="img img-2" style={inlineStyles.backgroundImage}/>
-                {/* <a href="#" className="img img-2" style={inlineStyles.backgroundImage}></a> */}
+                <Link to="/article/{props.article.id}" className="img img-2" style={inlineStyles.backgroundImage}></Link>
                 <div className="text text-2 pl-md-4">
                     <h3 className="mb-2"><a href="#"><span> {props.article.title} </span></a></h3>
                     <div className="meta-wrap">
