@@ -11,6 +11,10 @@ const ListMainSorting = () => {
     const selectedSorting = null;
     const options = getOptions();
 
+    const handleOnChange = () => {
+        // TODO
+    };
+    
     function getOptions() {
 
         let opions = [];
@@ -30,8 +34,7 @@ const ListMainSorting = () => {
             <div className="form-group row sorting-row ">
                 <label htmlFor="sorting" className="col-md-2 col-form-label lb-lg sorting">Sorting:</label>
                 <div className="col-md-4">
-                    {/* TODO - onChange */}
-                    <select className="form-control sorting">
+                    <select className="form-control sorting" onChange={handleOnChange}>
                         {options}			        
                     </select>
                 </div>
