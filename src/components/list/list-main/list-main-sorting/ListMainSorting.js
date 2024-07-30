@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 const ListMainSorting = () => {
 
@@ -8,6 +8,7 @@ const ListMainSorting = () => {
     const searchText = searchParams.get("searchText");
     const tagId = searchParams.get("tagId");
     const [selectedSorting, setSelectedSorting] = useState(sorting);
+    const navigate = useNavigate();
     
     const sortings = [
         new Sorting("title: increasing", "title_increasing"),
@@ -21,6 +22,9 @@ const ListMainSorting = () => {
 
     const handleOnChange = (event) => {
         setSelectedSorting(event.target.value);
+        // TODO
+        console.log(getUrl());
+        // navigate(getUrl());
     };
     
     function getOptions() {
@@ -33,6 +37,23 @@ const ListMainSorting = () => {
         }
 
         return opions;
+
+    }
+
+    function getUrl() {
+
+        const url = new URL("http://localhost:8080/");
+        url.searchParams.append("categoryId", categoryId);
+        url.searchParams.append("page", page);
+        url.searchParams.append("sorting", selectedSorting);
+        if (searchText != null) {
+            url.searchParams.append("searchText", {searchText});    
+        }
+        if (tagId != null) {
+            url.searchParams.append("tagId", {tagId});    
+        }
+
+        return url;
 
     }
 
