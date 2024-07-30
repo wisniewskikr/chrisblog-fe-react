@@ -21,12 +21,14 @@ const ListMainArticlesArticle = (props) => {
         },
     };
 
+    const articleUrl = `/article/${props.article.id}`;
+
     return (
         <div className="col-md-12">
             <div className="blog-entry ftco-animate d-md-flex">
-                <Link to="/article/{props.article.id}" className="img img-2" style={inlineStyles.backgroundImage}></Link>
+                <Link to={articleUrl} className="img img-2" style={inlineStyles.backgroundImage}></Link>
                 <div className="text text-2 pl-md-4">
-                    <h3 className="mb-2"><a href="#"><span> {props.article.title} </span></a></h3>
+                    <h3 className="mb-2"><Link to={articleUrl}><span> {props.article.title} </span></Link></h3>
                     <div className="meta-wrap">
                         <p className="meta">
                             <span><i className="icon-calendar mr-2"></i><span> {props.article.date} </span></span>
@@ -36,7 +38,7 @@ const ListMainArticlesArticle = (props) => {
                         </p>
                     </div>
                     <p className="mb-4" dangerouslySetInnerHTML={{ __html: props.article.description }} ></p>
-                    <p><Link to="/article/{props.article.id}" className="btn-custom">Read More <span className="ion-ios-arrow-forward"></span></Link></p>
+                    <p><Link to={articleUrl} className="btn-custom">Read More <span className="ion-ios-arrow-forward"></span></Link></p>
                 </div>
             </div>
         </div>
