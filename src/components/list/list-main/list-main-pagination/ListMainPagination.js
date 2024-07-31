@@ -10,7 +10,7 @@ const ListMainPagination = (props) => {
     const previousButton = getPreviousButton();
     const pagesButtons = getPagesButtons();
     const nextButton = getNextButton();
-
+  
     function getPreviousButton() {
 
         let content = [];
@@ -71,19 +71,22 @@ const ListMainPagination = (props) => {
         // TODO
     }
 
-    function onClickNext() {
+    function onClickNext(e) {
+
+        e.preventDefault();
         
         if (page == null) {
             throw new Error("Object Page can not be null");
         }
         
-        navigate(getUrl(page + 1));
+        const url = getUrl(Number(page) + 1);
+        navigate(url);        
 
     }
 
     function getUrl(newPage) {
 
-        const url = new URL(`http://localhost:8080/category/${categoryId}/sorting/${sorting}/page/${newPage}`);
+        const url = new URL(`http://localhost:3000/category/${categoryId}/sorting/${sorting}/page/${newPage}`);
         if (searchText != null) {
             url.searchParams.append("searchText", {searchText});    
         }
