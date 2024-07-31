@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 
 const ListMainPagination = (props) => {
 
@@ -6,7 +6,6 @@ const ListMainPagination = (props) => {
     const [searchParams] = useSearchParams();
     const searchText = searchParams.get("searchText");
     const tagId = searchParams.get("tagId");
-    const navigate = useNavigate();
     const previousButton = getPreviousButton();
     const pagesButtons = getPagesButtons();
     const nextButton = getNextButton();
@@ -18,7 +17,7 @@ const ListMainPagination = (props) => {
         if (props.disablePrevious) {
             content.push(<li className="disabled" key="previous"><span>&lt;</span></li>);
         } else {
-            content.push(<li key="previous"><Link onClick={onClickPrevious} className="pointer">&lt;</Link></li>);
+            content.push(<li key="previous"><Link to={getUrl(Number(page) - 1)} className="pointer">&lt;</Link></li>);
         }       
 
         return content;
@@ -34,7 +33,7 @@ const ListMainPagination = (props) => {
             if (pageItem === page) {
                 content.push(<li className="active" key={pageItem}><span> {pageItem} </span></li>);
             } else {
-                content.push(<li key={pageItem}><Link onClick={onClick} className="pointer"> {pageItem} </Link></li>);
+                content.push(<li key={pageItem}><Link to={getUrl(pageItem)} className="pointer"> {pageItem} </Link></li>);
             }
 
         }
@@ -50,37 +49,10 @@ const ListMainPagination = (props) => {
         if (props.disableNext) {
             content.push(<li className="disabled" key="next"><span>&gt;</span></li>);
         } else {
-            content.push(<li key="next"><Link onClick={onClickNext} className="pointer">&gt;</Link></li>);
+            content.push(<li key="next"><Link to={getUrl(Number(page) + 1)} className="pointer">&gt;</Link></li>);
         }       
 
         return content;
-
-    }
-
-    function onClickPrevious() {
-        
-        if (page == null) {
-            throw new Error("Object Page can not be null");
-        }
-        
-        navigate(getUrl(page - 1));
-
-    }
-
-    function onClick() {
-        // TODO
-    }
-
-    function onClickNext(e) {
-
-        e.preventDefault();
-        
-        if (page == null) {
-            throw new Error("Object Page can not be null");
-        }
-        
-        const url = getUrl(Number(page) + 1);
-        navigate(url);        
 
     }
 
