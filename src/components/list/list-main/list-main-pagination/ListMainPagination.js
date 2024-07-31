@@ -1,4 +1,4 @@
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 const ListMainPagination = (props) => {
 
@@ -6,6 +6,7 @@ const ListMainPagination = (props) => {
     const [searchParams] = useSearchParams();
     const searchText = searchParams.get("searchText");
     const tagId = searchParams.get("tagId");
+    const navigate = useNavigate();
     const previousButton = getPreviousButton();
     const pagesButtons = getPagesButtons();
     const nextButton = getNextButton();
@@ -33,7 +34,7 @@ const ListMainPagination = (props) => {
             if (pageItem === page) {
                 content.push(<li className="active" key={pageItem}><span> {pageItem} </span></li>);
             } else {
-                content.push(<li key={pageItem}><Link onClick={onClick(pageItem)} className="pointer"> {pageItem} </Link></li>);
+                content.push(<li key={pageItem}><Link onClick={onClick} className="pointer"> {pageItem} </Link></li>);
             }
 
         }
@@ -57,15 +58,41 @@ const ListMainPagination = (props) => {
     }
 
     function onClickPrevious() {
-        // TODO
+        
+        if (page == null) {
+            throw new Error("Object Page can not be null");
+        }
+        
+        navigate(getUrl(page - 1));
+
     }
 
-    function onClick(pageItem) {
+    function onClick() {
         // TODO
     }
 
     function onClickNext() {
-        // TODO
+        
+        if (page == null) {
+            throw new Error("Object Page can not be null");
+        }
+        
+        navigate(getUrl(page + 1));
+
+    }
+
+    function getUrl(newPage) {
+
+        const url = new URL(`http://localhost:8080/category/${categoryId}/sorting/${sorting}/page/${newPage}`);
+        if (searchText != null) {
+            url.searchParams.append("searchText", {searchText});    
+        }
+        if (tagId != null) {
+            url.searchParams.append("tagId", {tagId});    
+        }
+
+        return url.pathname;
+
     }
 
     return (
