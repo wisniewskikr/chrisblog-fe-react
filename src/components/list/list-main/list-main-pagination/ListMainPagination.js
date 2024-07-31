@@ -30,7 +30,7 @@ const ListMainPagination = (props) => {
         
         for (let pageItem of props.pages) {
 
-            if (pageItem === page) {
+            if (Number(pageItem) === Number(page)) {
                 content.push(<li className="active" key={pageItem}><span> {pageItem} </span></li>);
             } else {
                 content.push(<li key={pageItem}><Link to={getUrl(pageItem)} className="pointer"> {pageItem} </Link></li>);
