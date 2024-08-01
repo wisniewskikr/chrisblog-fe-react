@@ -44,7 +44,7 @@ const ListAsideCategories = () => {
         let content = [];
 
         const selected = (Number(categoryId) === 0);
-        content.push(<li className={`${selected ? "class.colorlib-active" : ""}`}> <Link to="/">Home</Link> </li>);
+        content.push(<li key="home" className={`${selected ? "class.colorlib-active" : ""}`}> <Link to="/">Home</Link> </li>);
 
         return content;
 
@@ -56,7 +56,7 @@ const ListAsideCategories = () => {
 
         for (let category of categories) {
             const selected = (Number(categoryId) === Number(category.id));
-            content.push(<li className={`${selected ? "class.colorlib-active" : ""}`}> <Link to={getUrl(category.id)}> {category.name} </Link> </li>);
+            content.push(<li key={category.id} className={`${selected ? "class.colorlib-active" : ""}`}> <Link to={getUrl(category.id)}> {category.name} </Link> </li>);
         }
 
         return content;
@@ -67,7 +67,7 @@ const ListAsideCategories = () => {
 
         let content = [];
 
-        content.push(<li> <Link to="/about">About Me</Link> </li>);
+        content.push(<li key="about"> <Link to="/about">About Me</Link> </li>);
 
         return content;
 
