@@ -27,10 +27,10 @@ const ListAsideSearch = () => {
 
         let content = [];
 
-        if (newSearchText !== null) {
-            content.push(<span key="search" className="icon icon-search" onClick={onClickSearch} role="presentation"></span>);
+        if (searchText !== null && searchText === newSearchText) {
+          content.push(<span key="clear" className="icon icon-cross" onClick={onClickClear} role="presentation"></span>);            
         } else {
-            content.push(<span key="clear" className="icon icon-cross" onClick={onClickClear} role="presentation"></span>);
+          content.push(<span key="search" className="icon icon-search" onClick={onClickSearch} role="presentation"></span>);
         }
 
         return content;
