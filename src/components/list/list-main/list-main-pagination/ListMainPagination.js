@@ -1,4 +1,5 @@
 import { Link, useParams, useSearchParams } from "react-router-dom";
+import { createUrl } from "../../../utils/Utils";
 
 const ListMainPagination = (props) => {
 
@@ -58,15 +59,9 @@ const ListMainPagination = (props) => {
 
     function getUrl(newPage) {
 
-        const url = new URL(`http://localhost:3000/category/${categoryId}/sorting/${sorting}/page/${newPage}`);
-        if (searchText != null) {
-            url.searchParams.append("searchText", {searchText});    
-        }
-        if (tagId != null) {
-            url.searchParams.append("tagId", {tagId});    
-        }
-
-        return url.pathname;
+        const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': newPage};
+        const queryParams = {'searchtext': searchText, 'tagid': tagId};
+        return createUrl(pathParams, queryParams);
 
     }
 
