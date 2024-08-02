@@ -8,7 +8,7 @@ const ListAsideSearch = () => {
     const searchText = searchParams.get("searchText");
     const tagId = searchParams.get("tagId");
     const navigate = useNavigate();
-    const [newSearchText, setNewSearchText] = useState(searchText);
+    const [newSearchText, setNewSearchText] = useState((searchText == null) ? "" : searchText);
 
     const contentIcon = getContentIcon();
 
@@ -28,9 +28,9 @@ const ListAsideSearch = () => {
         let content = [];
 
         if (newSearchText !== null) {
-            content.push(<span className="icon icon-search" onClick={onClickSearch} role="presentation"></span>);
+            content.push(<span key="search" className="icon icon-search" onClick={onClickSearch} role="presentation"></span>);
         } else {
-            content.push(<span className="icon icon-cross" onClick={onClickClear} role="presentation"></span>);
+            content.push(<span key="clear" className="icon icon-cross" onClick={onClickClear} role="presentation"></span>);
         }
 
         return content;
