@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { createUrl } from "../../../utils/Utils";
 
 const ListAsideSearch = () => { 
 
     let { categoryId, page, sorting } = useParams();
     const [searchParams] = useSearchParams();
-    const searchText = searchParams.get("searchText");
-    const tagId = searchParams.get("tagId");
+    const searchText = searchParams.get("searchtext");
+    const tagId = searchParams.get("tagid");
     const navigate = useNavigate();
     const [newSearchText, setNewSearchText] = useState((searchText == null) ? "" : searchText);
 
@@ -38,30 +39,22 @@ const ListAsideSearch = () => {
       }
 
       function onClickSearch() {
-        navigate(getUrl(newSearchText));
+        const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': page};
+        const queryParams = {'searchtext': newSearchText, 'tagid': tagId};
+        const url = createUrl(pathParams, queryParams);
+        navigate(url);
       }
 
       function onClickClear() {
-        navigate(getUrl(null));
+        const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': page};
+        const queryParams = {'searchtext': null, 'tagid': tagId};
+        const url = createUrl(pathParams, queryParams);
+        navigate(url);
       }
 
       function handleSearchChange(event) {
         setNewSearchText(event.target.value);
       }
-
-      function getUrl(newSearch) {
-
-            const url = new URL(`http://localhost:8080/category/${categoryId}/sorting/${sorting}/page/${page}`);
-            if (searchText != null) {
-                url.searchParams.append("searchText", {newSearch});    
-            }
-            if (tagId != null) {
-                url.searchParams.append("tagId", {tagId});    
-            }
-
-            return url.pathname;
-
-        }
     
     return (
         <div className="sidebar-box ftco-animate search-section">
