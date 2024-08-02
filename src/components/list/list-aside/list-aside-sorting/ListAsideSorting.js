@@ -11,14 +11,19 @@ const ListAsideSorting = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const script = document.createElement('script');
-        script.src = './../../../../../assets/js/main.js';
-        script.async = true;
-    
-        document.body.appendChild(script);
+        const scriptMain = document.createElement('script');
+        scriptMain.src = './../../../../../assets/js/main.js';
+        scriptMain.async = true;    
+        document.body.appendChild(scriptMain);
+
+        const scriptCustom = document.createElement('script');
+        scriptCustom.src = './../../../../../assets/js/custom.js';
+        scriptCustom.async = true;    
+        document.body.appendChild(scriptCustom);
     
         return () => {
-          document.body.removeChild(script);
+          document.body.removeChild(scriptMain);
+          document.body.removeChild(scriptCustom);
         };
       }, []);
     
