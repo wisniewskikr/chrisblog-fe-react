@@ -5,8 +5,8 @@ const ListAsideCategories = () => {
 
     let { categoryId, page, sorting } = useParams();
     const [searchParams] = useSearchParams();
-    const searchText = searchParams.get("searchText");
-    const tagId = searchParams.get("tagId");
+    const searchText = searchParams.get("searchtext");
+    const tagId = searchParams.get("tagid");
 
     const [categories, setCategories] = useState([]);
     const contentHome = getContentHome();
