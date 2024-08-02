@@ -57,15 +57,9 @@ const ListAsideSorting = () => {
 
     function getUrl(newSorting) {
 
-        const url = new URL(`http://localhost:8080/category/${categoryId}/sorting/${newSorting}/page/${page}`);
-        if (searchText != null) {
-            url.searchParams.append("searchText", {searchText});    
-        }
-        if (tagId != null) {
-            url.searchParams.append("tagId", {tagId});    
-        }
-
-        return url.pathname;
+        const pathParams = {'categoryId': categoryId, 'sorting': newSorting, 'page': page};
+        const queryParams = {'searchtext': searchText, 'tagid': tagId};
+        return createUrl(pathParams, queryParams);
 
     }
 
