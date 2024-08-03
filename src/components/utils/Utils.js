@@ -1,4 +1,4 @@
-export const createUrl = (pathParams = {}, queryParams = {}) => {
+export const getCategoryPathAndQuery = (pathParams = {}, queryParams = {}) => {
 
     let path = `/category/:categoryId/sorting/:sorting/page/:page`;
     for (const [key, value] of Object.entries(pathParams)) {

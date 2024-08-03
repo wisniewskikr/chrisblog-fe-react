@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { createUrl } from "../../../utils/Utils";
+import { getCategoryPathAndQuery } from "../../../utils/Utils";
 
 const ListMainSorting = () => {
 
@@ -43,7 +43,7 @@ const ListMainSorting = () => {
 
         const pathParams = {'categoryId': categoryId, 'sorting': newSorting, 'page': page};
         const queryParams = {'searchtext': searchText, 'tagid': tagId};
-        return createUrl(pathParams, queryParams);
+        return getCategoryPathAndQuery(pathParams, queryParams);
 
     }
 

@@ -1,5 +1,5 @@
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { createUrl } from "../../../utils/Utils";
+import { getCategoryPathAndQuery } from "../../../utils/Utils";
 
 const ListMainPagination = (props) => {
 
@@ -61,7 +61,7 @@ const ListMainPagination = (props) => {
 
         const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': newPage};
         const queryParams = {'searchtext': searchText, 'tagid': tagId};
-        return createUrl(pathParams, queryParams);
+        return getCategoryPathAndQuery(pathParams, queryParams);
 
     }
 
