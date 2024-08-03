@@ -29,7 +29,7 @@ const ListMain = () => {
                 throw new Error("Atributes 'categoryId', 'page' and 'sorting' are required.");
             }
 
-            const queryParams = {'categoryId': categoryId, 'page': page, 'sorting': sorting, 'searchtext': searchText, 'tagid': tagId};
+            const queryParams = {'categoryId': categoryId, 'page': page, 'sorting': sorting, 'searchText': searchText, 'tagId': tagId};
             const articleUrl = getArticleURL(queryParams);
             const response = await fetch(articleUrl);
 
