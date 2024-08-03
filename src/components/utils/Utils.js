@@ -12,13 +12,13 @@ export const getCategoryPathAndQuery = (pathParams = {}, queryParams = {}) => {
         }
     }
 
-    const fullUrl = (![...searchParams.keys()].length) ? `${path}` : `${path}?${searchParams.toString()}`;
+    const result = (![...searchParams.keys()].length) ? `${path}` : `${path}?${searchParams.toString()}`;
 
-    return fullUrl;
+    return result;
     
 };
 
-export const getArticleURL = (queryParams = {}) => {
+export const getArticlesURL = (queryParams = {}) => {
 
     let path = `http://localhost:8080/api/v1/article`;
  
@@ -29,8 +29,8 @@ export const getArticleURL = (queryParams = {}) => {
         }
     }
 
-    const fullUrl = (![...searchParams.keys()].length) ? `${path}` : `${path}?${searchParams.toString()}`;
+    const result = (![...searchParams.keys()].length) ? `${path}` : `${path}?${searchParams.toString()}`;
 
-    return fullUrl;
+    return result;
     
 };
