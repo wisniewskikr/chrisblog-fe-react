@@ -18,7 +18,7 @@ export const getCategoryPathAndQuery = (pathParams = {}, queryParams = {}) => {
     
 };
 
-export const getArticlesURL = (queryParams = {}) => {
+export const getArticlesApiUrl = (queryParams = {}) => {
 
     let path = `http://localhost:8080/api/v1/article`;
  
@@ -32,5 +32,16 @@ export const getArticlesURL = (queryParams = {}) => {
     const result = (![...searchParams.keys()].length) ? `${path}` : `${path}?${searchParams.toString()}`;
 
     return result;
+    
+};
+
+export const getArticleApiUrl = (pathParams = {}) => {
+
+    let path = `http://localhost:8080/api/v1/article/:id`;
+    for (const [key, value] of Object.entries(pathParams)) {
+        path = path.replace(`:${key}`, encodeURIComponent(value));
+    }
+    
+    return path;
     
 };

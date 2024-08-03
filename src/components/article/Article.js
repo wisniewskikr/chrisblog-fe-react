@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { getArticleApiUrl } from '../utils/Utils';
 
 const Article = () => {
 
@@ -33,7 +34,9 @@ const Article = () => {
     
           try {
 
-            const response = await fetch(`http://localhost:8080/api/v1/article/${id}`);
+            const pathParams = {'id': id};
+            const articleUrl = getArticleApiUrl(pathParams);
+            const response = await fetch(articleUrl);
 
             if (!response.ok) {
                 const text = JSON.stringify(response.text());

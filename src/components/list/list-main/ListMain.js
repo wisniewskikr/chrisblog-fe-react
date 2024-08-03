@@ -3,7 +3,7 @@ import ListMainArticles from "./list-main-articles/ListMainArticles";
 import ListMainPagination from "./list-main-pagination/ListMainPagination";
 import ListMainSorting from "./list-main-sorting/ListMainSorting";
 import { useParams, useSearchParams } from "react-router-dom";
-import { getArticlesURL } from "../../utils/Utils";
+import { getArticlesApiUrl } from "../../utils/Utils";
 
 const ListMain = () => { 
 
@@ -30,7 +30,7 @@ const ListMain = () => {
             }
 
             const queryParams = {'categoryId': categoryId, 'page': page, 'sorting': sorting, 'searchText': searchText, 'tagId': tagId};
-            const articleUrl = getArticlesURL(queryParams);
+            const articleUrl = getArticlesApiUrl(queryParams);
             const response = await fetch(articleUrl);
 
             if (!response.ok) {
