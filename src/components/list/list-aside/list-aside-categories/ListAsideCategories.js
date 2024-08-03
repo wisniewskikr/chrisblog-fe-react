@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getCategoryPathAndQuery } from "../../../utils/Utils";
+import { getCategoryApiUrl, getCategoryPathAndQuery } from "../../../utils/Utils";
 
 const ListAsideCategories = () => {
 
@@ -17,7 +17,8 @@ const ListAsideCategories = () => {
     
           try {
 
-            const response = await fetch("http://localhost:8080/api/v1/category");
+            const url = getCategoryApiUrl();
+            const response = await fetch(url);
 
             if (!response.ok) {
                 const text = JSON.stringify(response.text());

@@ -45,3 +45,10 @@ export const getArticleApiUrl = (pathParams = {}) => {
     return path;
     
 };
+
+export const getCategoryApiUrl = () => {
+
+    let path = `http://localhost:8080/api/v1/category`;
+    return path;
+    
+};
