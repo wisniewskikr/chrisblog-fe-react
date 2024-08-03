@@ -43,7 +43,7 @@ const ListAsideCategories = () => {
         let content = [];
 
         const selected = (Number(categoryId) === 0);
-        content.push(<li key="home" className={selected ? 'colorlib-active' : ''}> <Link to="/">Home</Link> </li>);
+        content.push(<li key="home" className={selected ? 'colorlib-active' : ''}> <Link to={getUrl(0)}>Home</Link> </li>);
 
         return content;
 
