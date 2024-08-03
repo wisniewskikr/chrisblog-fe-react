@@ -28,7 +28,7 @@ const ListAsideSearch = () => {
 
         let content = [];
 
-        if (searchText !== null && searchText === newSearchText) {
+        if (searchText !== null) {
           content.push(<span key="clear" className="icon icon-cross" onClick={onClickClear} role="presentation"></span>);            
         } else {
           content.push(<span key="search" className="icon icon-search" onClick={onClickSearch} role="presentation"></span>);
@@ -38,7 +38,7 @@ const ListAsideSearch = () => {
 
       }
 
-      function onClickSearch() {
+      function onClickSearch() {        
         const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': page};
         const queryParams = {'searchtext': newSearchText, 'tagid': tagId};
         const url = getCategoryPathAndQuery(pathParams, queryParams);
@@ -46,6 +46,7 @@ const ListAsideSearch = () => {
       }
 
       function onClickClear() {
+        setNewSearchText("");
         const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': page};
         const queryParams = {'searchtext': null, 'tagid': tagId};
         const url = getCategoryPathAndQuery(pathParams, queryParams);
