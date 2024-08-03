@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const About = () => {
 
+    const navigate = useNavigate();
+    
     useEffect(() => {
         const script = document.createElement('script');
         script.src = './../../../assets/js/main.js';
@@ -14,6 +16,10 @@ const About = () => {
           document.body.removeChild(script);
         };
       }, []);
+
+      const handleGoBack = () => {
+        navigate(-1);
+      };
     
     return(
         <div id="colorlib-page">
@@ -37,7 +43,7 @@ const About = () => {
                                         If you want to contact me please use my email <a href="mailto:wisniewskikr@gmail.com">wisniewskikr&#64;gmail.com</a> 
                                         , <a href="https://www.facebook.com/krzysztof.wisniewski.1979" target="_blank" rel="noreferrer">Facebook page</a>
                                         or <a href="https://www.instagram.com/krzysztof.wisniewski.1979/" target="_blank" rel="noreferrer">Instagram page</a>.</p>
-                                        <Link to="/" className="btn py-3 px-4 btn-primary">Go Back</Link>
+                                        <Link onClick={handleGoBack} className="btn py-3 px-4 btn-primary">Go Back</Link>
                                     </div>
                                 </div>
                                 
