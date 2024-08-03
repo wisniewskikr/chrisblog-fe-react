@@ -3,6 +3,7 @@ import ListMainArticles from "./list-main-articles/ListMainArticles";
 import ListMainPagination from "./list-main-pagination/ListMainPagination";
 import ListMainSorting from "./list-main-sorting/ListMainSorting";
 import { useParams, useSearchParams } from "react-router-dom";
+import { getArticleURL } from "../../utils/Utils";
 
 const ListMain = () => { 
 
@@ -26,20 +27,11 @@ const ListMain = () => {
 
             if (categoryId == null || page == null || sorting == null) {
                 throw new Error("Atributes 'categoryId', 'page' and 'sorting' are required.");
-              }
-
-            const articlesUrl = new URL("http://localhost:8080/api/v1/article");
-            articlesUrl.searchParams.append("categoryId", categoryId);
-            articlesUrl.searchParams.append("page", page);
-            articlesUrl.searchParams.append("sorting", sorting);
-            if (searchText != null) {
-                articlesUrl.searchParams.append("searchText", {searchText});    
-            }
-            if (tagId != null) {
-                articlesUrl.searchParams.append("tagId", {tagId});    
             }
 
-            const response = await fetch(articlesUrl);
+            const queryParams = {'categoryId': categoryId, 'page': page, 'sorting': sorting, 'searchtext': searchText, 'tagid': tagId};
+            const articleUrl = getArticleURL(queryParams);
+            const response = await fetch(articleUrl);
 
             if (!response.ok) {
                 const text = JSON.stringify(response.text());

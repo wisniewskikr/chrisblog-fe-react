@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { createUrl } from "../../../utils/Utils";
+import { getCategoryPathAndQuery } from "../../../utils/Utils";
 
 const ListAsideCategories = () => {
 
@@ -75,7 +75,7 @@ const ListAsideCategories = () => {
 
         const pathParams = {'categoryId': newCategoryId, 'sorting': sorting, 'page': page};
         const queryParams = {'searchtext': null, 'tagid': null};
-        return createUrl(pathParams, queryParams);
+        return getCategoryPathAndQuery(pathParams, queryParams);
 
     }
     

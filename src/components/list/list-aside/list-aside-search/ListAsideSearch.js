@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { createUrl } from "../../../utils/Utils";
+import { getCategoryPathAndQuery } from "../../../utils/Utils";
 
 const ListAsideSearch = () => { 
 
@@ -41,14 +41,14 @@ const ListAsideSearch = () => {
       function onClickSearch() {
         const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': page};
         const queryParams = {'searchtext': newSearchText, 'tagid': tagId};
-        const url = createUrl(pathParams, queryParams);
+        const url = getCategoryPathAndQuery(pathParams, queryParams);
         navigate(url);
       }
 
       function onClickClear() {
         const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': page};
         const queryParams = {'searchtext': null, 'tagid': tagId};
-        const url = createUrl(pathParams, queryParams);
+        const url = getCategoryPathAndQuery(pathParams, queryParams);
         navigate(url);
       }
 

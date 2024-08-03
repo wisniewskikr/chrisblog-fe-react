@@ -17,3 +17,20 @@ export const getCategoryPathAndQuery = (pathParams = {}, queryParams = {}) => {
     return fullUrl;
     
 };
+
+export const getArticleURL = (queryParams = {}) => {
+
+    let path = `http://localhost:8080/api/v1/article`;
+ 
+    const searchParams = new URLSearchParams();
+    for (const [key, value] of Object.entries(queryParams)) {
+        if (value !== null && value !== undefined) {
+            searchParams.append(key, value);
+        }
+    }
+
+    const fullUrl = (![...searchParams.keys()].length) ? `${path}` : `${path}?${searchParams.toString()}`;
+
+    return fullUrl;
+    
+};
