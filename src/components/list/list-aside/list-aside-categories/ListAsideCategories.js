@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getCategoryApiUrl, getCategoryPathAndQuery } from "../../../utils/Utils";
 
-const ListAsideCategories = () => {
+const ListAsideCategories = ({setNewSearchText}) => {
 
     let { categoryId, page, sorting } = useParams();
 
@@ -43,7 +43,7 @@ const ListAsideCategories = () => {
         let content = [];
 
         const selected = (Number(categoryId) === 0);
-        content.push(<li key="home" className={selected ? 'colorlib-active' : ''}> <Link to={getUrl(0)}>Home</Link> </li>);
+        content.push(<li key="home" className={selected ? 'colorlib-active' : ''}> <Link to={getUrl(0)} onClick={handleOnClick}>Home</Link> </li>);
 
         return content;
 
@@ -55,7 +55,7 @@ const ListAsideCategories = () => {
 
         for (let category of categories) {
             const selected = (Number(categoryId) === Number(category.id));
-            content.push(<li key={category.id} className={selected ? 'colorlib-active' : ''}> <Link to={getUrl(category.id)}> {category.name} </Link> </li>);
+            content.push(<li key={category.id} className={selected ? 'colorlib-active' : ''}> <Link to={getUrl(category.id)} onClick={handleOnClick}> {category.name} </Link> </li>);
         }
 
         return content;
@@ -78,6 +78,10 @@ const ListAsideCategories = () => {
         const queryParams = {'searchtext': null, 'tagid': null};
         return getCategoryPathAndQuery(pathParams, queryParams);
 
+    }
+
+    function handleOnClick() {
+        setNewSearchText("");
     }
     
     return (

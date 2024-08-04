@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useEffect} from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { getCategoryPathAndQuery } from "../../../utils/Utils";
 
-const ListAsideSearch = () => { 
+const ListAsideSearch = ({searchText, newSearchText, setNewSearchText, tagId}) => { 
 
     let { categoryId, page, sorting } = useParams();
-    const [searchParams] = useSearchParams();
-    const searchText = searchParams.get("searchtext");
-    const tagId = searchParams.get("tagid");
     const navigate = useNavigate();
-    const [newSearchText, setNewSearchText] = useState((searchText == null) ? "" : searchText);
-
     const contentIcon = getContentIcon();
 
     useEffect(() => {
