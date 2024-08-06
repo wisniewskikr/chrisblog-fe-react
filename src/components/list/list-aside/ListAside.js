@@ -12,6 +12,7 @@ const ListAside = () => {
     const searchText = searchParams.get("searchtext");
     const tagId = searchParams.get("tagid");
     const [newSearchText, setNewSearchText] = useState((searchText == null) ? "" : searchText);
+    const [newTagId, setNewTagId] = useState((tagId == null) ? "" : tagId);
     
     return(
         
@@ -23,7 +24,7 @@ const ListAside = () => {
 
             <ListAsideSearch searchText={searchText} newSearchText={newSearchText} setNewSearchText={setNewSearchText} tagId={tagId}/> 
 
-            <ListAsideTag/> 
+            <ListAsideTag searchText={searchText} tagId={tagId} newTagId={newTagId} setNewTagId={setNewTagId}/> 
 
             <ListAsideFooter/> 
 
