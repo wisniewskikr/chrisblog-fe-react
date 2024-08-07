@@ -8,7 +8,7 @@ const ListAsideTag = ({searchText, tagId, newTagId, setNewTagId}) => {
     const navigate = useNavigate();
     const [tags, setTags] = useState([]);
     const tagListContent = getTagListContent();
-    
+    const isHomeCategory = estimateHomeCategory();    
 
     useEffect(() =>{
 
@@ -64,23 +64,29 @@ const ListAsideTag = ({searchText, tagId, newTagId, setNewTagId}) => {
             }
         } else {
             content.push("There is no tag yet.");
-        }
-
-        
+        }       
 
         return content;
 
     }
+
+    function estimateHomeCategory() {
+        return Number(categoryId) === 0;
+    }
     
     return (
-        <div className="sidebar-box ftco-animate tag-section">
-            <h3 className="sidebar-heading section-header">Tag Cloud</h3>
-            <ul className="tagcloud" >
-                <span>
-                    {tagListContent}
-                </span>
-            </ul>
-        </div>
+        <>
+            {!isHomeCategory && 
+                <div className="sidebar-box ftco-animate tag-section">
+                    <h3 className="sidebar-heading section-header">Tag Cloud</h3>
+                    <ul className="tagcloud" >
+                        <span>
+                            {tagListContent}
+                        </span>
+                    </ul>
+                </div>
+            }
+        </>
     );
 
 }
