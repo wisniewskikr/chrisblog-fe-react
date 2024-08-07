@@ -60,7 +60,8 @@ const ListAsideTag = ({searchText, tagId, newTagId, setNewTagId}) => {
 
         if (tags.length !== 0) {
             for (let tag of tags) {
-                content.push(<Link key={tag.id} className="tag-cloud-link no-selected" > {tag.name} </Link>);
+                const selected = (Number(tagId) === Number(tag.id));
+                content.push(<Link key={tag.id} className={selected ? 'tag-cloud-link selected' : 'tag-cloud-link no-selected'} > {tag.name} </Link>);
             }
         } else {
             content.push("There is no tag yet.");
