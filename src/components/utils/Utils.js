@@ -52,3 +52,20 @@ export const getCategoryApiUrl = () => {
     return path;
     
 };
+
+export const getTagsApiUrl = (queryParams = {}) => {
+
+    let path = `http://localhost:8080/api/v1/tag`;
+ 
+    const searchParams = new URLSearchParams();
+    for (const [key, value] of Object.entries(queryParams)) {
+        if (value !== null && value !== undefined) {
+            searchParams.append(key, value);
+        }
+    }
+
+    const result = (![...searchParams.keys()].length) ? `${path}` : `${path}?${searchParams.toString()}`;
+
+    return result;
+    
+};
