@@ -18,7 +18,7 @@ const ListAside = () => {
         
         <aside id="colorlib-aside" className="js-fullheight">
             
-            <ListAsideCategories setNewSearchText={setNewSearchText}/> 
+            <ListAsideCategories setNewSearchText={setNewSearchText} setNewTagId={setNewTagId}/> 
 
             <ListAsideSorting/> 
 

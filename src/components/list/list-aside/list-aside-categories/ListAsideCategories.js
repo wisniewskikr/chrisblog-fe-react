@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getCategoryApiUrl, getCategoryPathAndQuery } from "../../../utils/Utils";
 
-const ListAsideCategories = ({setNewSearchText}) => {
+const ListAsideCategories = ({setNewSearchText, setNewTagId}) => {
 
     let { categoryId, page, sorting } = useParams();
 
@@ -82,6 +82,7 @@ const ListAsideCategories = ({setNewSearchText}) => {
 
     function handleOnClick() {
         setNewSearchText("");
+        setNewTagId("");
     }
     
     return (
