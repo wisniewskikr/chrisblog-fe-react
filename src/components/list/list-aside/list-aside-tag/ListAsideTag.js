@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { getTagsApiUrl } from "../../../utils/Utils";
+import { Link, useParams } from "react-router-dom";
+import { getCategoryPathAndQuery, getTagsApiUrl } from "../../../utils/Utils";
 
 const ListAsideTag = ({searchText, tagId, newTagId, setNewTagId}) => {
 
     let { categoryId, page, sorting } = useParams();
-    const navigate = useNavigate();
     const [tags, setTags] = useState([]);
     const tagListContent = getTagListContent();
-    const isHomeCategory = estimateHomeCategory();    
+    const isHomeCategory = estimateHomeCategory(); 
 
     useEffect(() =>{
 
@@ -60,8 +59,9 @@ const ListAsideTag = ({searchText, tagId, newTagId, setNewTagId}) => {
 
         if (tags.length !== 0) {
             for (let tag of tags) {
-                const selected = (Number(tagId) === Number(tag.id));
-                content.push(<Link key={tag.id} className={selected ? 'tag-cloud-link selected' : 'tag-cloud-link no-selected'} > {tag.name} </Link>);
+                const selected = (Number(newTagId) === Number(tag.id));
+                const url = (selected) ? getUrlSelected() : getUrlNotSelected(tag.id);
+                content.push(<Link key={tag.id} to={url} className={selected ? 'tag-cloud-link selected' : 'tag-cloud-link no-selected'} onClick={() => handleOnClick(tag.id)} > {tag.name} </Link>);
             }
         } else {
             content.push("There is no tag yet.");
@@ -73,6 +73,26 @@ const ListAsideTag = ({searchText, tagId, newTagId, setNewTagId}) => {
 
     function estimateHomeCategory() {
         return Number(categoryId) === 0;
+    }
+
+    function handleOnClick(selectedTagId) {    
+        setNewTagId(Number(newTagId) !== Number(selectedTagId) ? selectedTagId : ""); 
+    }
+
+    function getUrlSelected() {
+
+        const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': page};
+        const queryParams = {'searchtext': searchText, 'tagid': null};
+        return getCategoryPathAndQuery(pathParams, queryParams);
+
+    }
+
+    function getUrlNotSelected(selectedTagId) {
+
+        const pathParams = {'categoryId': categoryId, 'sorting': sorting, 'page': page};
+        const queryParams = {'searchtext': searchText, 'tagid': selectedTagId};
+        return getCategoryPathAndQuery(pathParams, queryParams);
+
     }
     
     return (
