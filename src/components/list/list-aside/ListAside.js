@@ -3,7 +3,7 @@ import ListAsideSorting from "./list-aside-sorting/ListAsideSorting";
 import ListAsideSearch from "./list-aside-search/ListAsideSearch";
 import ListAsideTag from "./list-aside-tag/ListAsideTag";
 import ListAsideFooter from "./list-aside-footer/ListAsideFooter";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 
 const ListAside = () => {
@@ -17,7 +17,7 @@ const ListAside = () => {
     return(
         
         <>
-            <a id="navigation" href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+            <Link id="navigation" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></Link>
             <aside id="colorlib-aside" className="js-fullheight">
                 
                 <ListAsideCategories setNewSearchText={setNewSearchText} setNewTagId={setNewTagId}/> 
