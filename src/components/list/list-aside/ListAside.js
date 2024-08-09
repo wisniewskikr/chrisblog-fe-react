@@ -16,19 +16,22 @@ const ListAside = () => {
     
     return(
         
-        <aside id="colorlib-aside" className="js-fullheight">
-            
-            <ListAsideCategories setNewSearchText={setNewSearchText} setNewTagId={setNewTagId}/> 
+        <>
+            <a id="navigation" href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+            <aside id="colorlib-aside" className="js-fullheight">
+                
+                <ListAsideCategories setNewSearchText={setNewSearchText} setNewTagId={setNewTagId}/> 
 
-            <ListAsideSorting/> 
+                <ListAsideSorting/> 
 
-            <ListAsideSearch searchText={searchText} newSearchText={newSearchText} setNewSearchText={setNewSearchText} tagId={tagId}/> 
+                <ListAsideSearch searchText={searchText} newSearchText={newSearchText} setNewSearchText={setNewSearchText} tagId={tagId}/> 
 
-            <ListAsideTag searchText={searchText} tagId={tagId} newTagId={newTagId} setNewTagId={setNewTagId}/> 
+                <ListAsideTag searchText={searchText} tagId={tagId} newTagId={newTagId} setNewTagId={setNewTagId}/> 
 
-            <ListAsideFooter/> 
+                <ListAsideFooter/> 
 
-        </aside>
+            </aside>
+        </>
 
     );
 
